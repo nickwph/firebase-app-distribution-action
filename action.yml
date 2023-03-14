@@ -58,5 +58,5 @@ runs:
           --testers-file "${{ inputs.testers-file }}" \
           --groups "${{ inputs.groups }}" \
           --groups-file "${{ inputs.groups-file }}" \
-          --debug ${{ inputs.debug }} \
+          ${{ inputs.debug ? "--debug" : "" }} \
           ${{ inputs.file }}

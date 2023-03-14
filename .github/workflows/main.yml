@@ -33,5 +33,6 @@ jobs:
       - name: Run .
         uses: ./
         with:
-          file: hello
-          app: world
+          file: ${{ secret.FIREBASE_APP_ID }}
+          app: github/workflows/assets/app-debug.apk
+          token: ${{ secret.FIREBASE_TOKEN }}

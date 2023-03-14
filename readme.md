@@ -37,7 +37,7 @@ jobs:
           testers-file: ""                      # optional
           groups: ""                            # optional
           groups-file: ""                       # optional
-          debug: ""                             # optional: true or false
+          debug: ""                             # optional: default false
 ```
 
 ## Limitations and improvements

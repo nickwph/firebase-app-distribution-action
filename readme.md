@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: nickwph/firebase-app-distribution-action@v1
         with:
-          file: .github/workflows/assets/app-debug.apk
+          file: app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}  # deprecated: replacing with service-credentials-file soon
           release-notes: ""                     # optional

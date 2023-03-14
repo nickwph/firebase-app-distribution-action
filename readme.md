@@ -37,16 +37,12 @@ jobs:
           testers-file: ""        # Optional
           groups: ""              # Optional
           groups-file: ""         # Optional
-          debug: false            # Optional: Default false
-                                  #   A flag you can include to print verbose log output.
-          cache: true             # Optional: Default true
-                                  #   Whether to cache the firebase tools for next 
-                                  #   job, keeping this TRUE will speed up the build.
-          upgrade: true           # Optional: Default true
-                                  #   Whether to attempt to upgrade firebase tools 
-                                  #   when cache is on, turning this FALSE will 
-                                  #   speed up the build.
+          debug: false            # Optional: Default false. A flag you can include to print verbose log output.
+          cache: true             # Optional: Default true. Whether to cache the firebase tools for next job, keeping this true will speed up the build.
+          upgrade: true           # Optional: Default true. Whether to attempt to upgrade firebase tools when cache is on, turning this false will speed up the build.
 ```
+
+
 
 ## Limitations and improvements
 

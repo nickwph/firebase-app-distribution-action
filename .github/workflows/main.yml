@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: echo '${{ secrets.FIREBASE_CREDENTIALS }}' > ${{ secrets.FIREBASE_CREDENTIALS_FILE }}
       - name: Run nickwph/firebase-app-distribution-action@v1
         uses: ./
         with:

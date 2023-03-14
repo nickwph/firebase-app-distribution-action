@@ -40,7 +40,9 @@ runs:
   steps:
     - uses: actions/cache@v3
       env: { cache-name: firebase-app-distribution-action }
-      with: { path: /usr/local/bin/firebase }
+      with: 
+        path: /usr/local/bin/firebase
+        key: ${{ hashFiles('/usr/local/bin/firebase') }}
     - shell: bash
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash

@@ -14,3 +14,31 @@ downloading and installing, the whole process is just ~17s.
 Nothing is needed to config, after the first run the firebase tools will be cached and reused 
 the next time. Version checking will be executed automatically so it will be updated on next 
 run as well.
+
+## Usage
+
+Add the following step to your workflow.
+
+```yml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nickwph/firebase-app-distribution-action@v1
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}  # deprecated: replacing with service-credentials-file soon
+          release-notes: ""                     # optional
+          release-notes-file: ""                # optional
+          testers: ""                           # optional
+          testers-file: ""                      # optional
+          groups: ""                            # optional
+          groups-file: ""                       # optional
+          debug: ""                             # optional: true or false
+```
+
+## Limitations and improvements
+
+1. Currently only works on linux.
+2. Pending to support service-credentials-file.

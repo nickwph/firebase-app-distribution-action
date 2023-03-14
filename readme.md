@@ -1,6 +1,6 @@
 # Distribute To Firebase App Distribution
 
-A very simplified version of Github Action that does the job fast.
+A very optimized version of Github Action that does the job fast.
 
 ## Super fast prepation and upload time - ~17s
 

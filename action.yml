@@ -42,6 +42,15 @@ runs:
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash
       run: |
+        echo ${INPUT_TOKEN}
+        echo ${INPUT_RELEASE-NOTES}
+        echo ${INPUT_RELEASE-NOTES-FILE}
+        echo ${INPUT_TESTERS}
+        echo ${INPUT_TESTERS-FILE}
+        echo ${INPUT_GROUPS}
+        echo ${INPUT_GROUPS-FILE}
+        echo ${INPUT_DEBUG}
+        echo ${INPUT_FILE}
         /usr/local/bin/firebase appdistribution:distribute \
           --app ${INPUT_APP} \
           ${INPUT_TOKEN:+ --token ${INPUT_TOKEN}} \

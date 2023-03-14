@@ -50,7 +50,7 @@ runs:
       run: |
          /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
-          --token "${{ inputs.token }}"" \
+          --token "${{ inputs.token }}" \
           --release-notes "${{ inputs.release-notes }}" \
           --release-notes-file "${inputs.release-notes-file}}" \
           --testers "${inputs.testers}}" \

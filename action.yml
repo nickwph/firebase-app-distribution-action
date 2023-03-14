@@ -42,7 +42,7 @@ runs:
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash
       run: |
-        firebase appdistribution:distribute \
+        /usr/local/bin/firebase appdistribution:distribute \
           --app ${INPUT_APP} \
           ${INPUT_TOKEN:+ --token ${INPUT_TOKEN}} \
           ${INPUT_RELEASE-NOTES:+ --release-notes ${INPUT_RELEASE-NOTES}} \

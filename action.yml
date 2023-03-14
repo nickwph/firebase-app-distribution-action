@@ -49,7 +49,7 @@ runs:
   using: composite
   steps:
     - uses: actions/cache@v3
-      if: ${{ inputs.cache }}
+      if: ${{ inputs.cache == 'true' }}
       env: { cache-name: firebase-app-distribution-action }
       with:
         path: /usr/local/bin/firebase

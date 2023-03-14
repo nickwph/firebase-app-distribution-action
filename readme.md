@@ -15,6 +15,8 @@ Nothing is needed to config, after the first run the firebase tools will be cach
 the next time. Version checking will be executed automatically so it will be updated on next 
 run as well.
 
+![even-faster-with-cache](.docs/assets/even-faster-with-cache.png?raw=true)
+
 ## Usage
 
 Add the following step to your workflow.

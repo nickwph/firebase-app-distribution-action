@@ -63,7 +63,7 @@ runs:
     - shell: bash
       if: ${{ inputs.credentials == null && inputs.credentials-file != null }}
       run: |
-        export GOOGLE_APPLICATION_CREDENTIALS=${{ credentials-file }}
+        export GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials-file }}
     - shell: bash
       if: ${{ inputs.credentials != null }}
       run: |

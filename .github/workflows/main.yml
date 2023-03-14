@@ -1,5 +1,30 @@
 name: Main
-on: [push, pull_request, workflow_dispatch]
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      file:
+        type: string
+      app:
+        type: string
+      token:
+        type: string
+      release-notes:
+        type: string
+      release-notes-file:
+        type: string
+      testers:
+        type: string
+      testers-file:
+        type: string
+      groups:
+        type: string
+      groups-file:
+        type: string
+      debug:
+        type: boolean
+
 jobs:
   test:
     runs-on: ubuntu-latest

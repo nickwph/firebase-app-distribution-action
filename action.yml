@@ -73,10 +73,7 @@ runs:
       run: |
         curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash
     - shell: bash
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: .github/credentials.json
       run: |
-        cat $GOOGLE_APPLICATION_CREDENTIALS
         /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
           --release-notes "${{ inputs.release-notes }}" \

@@ -75,4 +75,3 @@ credentials-file: ${{ secrets.FIREBASE_CREDENTIALS_FILE }}
 ## Limitations and improvements
 
 1. Currently only works on linux (including macos)
-2. Pending to support service-credentials-file.

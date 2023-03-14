@@ -30,14 +30,22 @@ jobs:
         with:
           file: app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}  # deprecated: replacing with service-credentials-file soon
-          release-notes: ""                     # optional
-          release-notes-file: ""                # optional
-          testers: ""                           # optional
-          testers-file: ""                      # optional
-          groups: ""                            # optional
-          groups-file: ""                       # optional
-          debug: ""                             # optional: default false
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          release-notes: ""       # Optional
+          release-notes-file: ""  # Optional
+          testers: ""             # Optional
+          testers-file: ""        # Optional
+          groups: ""              # Optional
+          groups-file: ""         # Optional
+          debug: false            # Optional: Default false
+                                  #   A flag you can include to print verbose log output.
+          cache: true             # Optional: Default true
+                                  #   Whether to cache the firebase tools for next 
+                                  #   job, keeping this TRUE will speed up the build.
+          upgrade: true           # Optional: Default true
+                                  #   Whether to attempt to upgrade firebase tools 
+                                  #   when cache is on, turning this FALSE will 
+                                  #   speed up the build.
 ```
 
 ## Limitations and improvements

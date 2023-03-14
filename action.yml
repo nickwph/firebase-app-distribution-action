@@ -6,7 +6,7 @@ branding:
   icon: cloud-drizzle
 inputs:
   file:
-    description: The release binary file
+    description: The release binary file to upload.
     required: true
   app:
     description: Your app's Firebase App ID. You can find the App ID in the Firebase console, on the General Settings page.
@@ -48,10 +48,7 @@ runs:
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash
       run: |
-        # file: ${{ inputs.file }}
-        # app: ${{ inputs.app }}
-        # token: ${{ inputs.token }}
-        /usr/local/bin/firebase appdistribution:distribute \
+         /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
           --token ${{ inputs.token }} \
           ${{ inputs.file }}

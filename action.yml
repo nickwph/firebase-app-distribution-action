@@ -15,23 +15,29 @@ inputs:
     description: A refresh token that's printed when you authenticate your CI environment with the Firebase CLI (read Use the CLI with CI systems for more information).
     required: false
     deprecationMessage: Authenticating with `--token` is deprecated and will be removed in a future major version of `firebase-tools`. Instead, use a service account key with `GOOGLE_APPLICATION_CREDENTIALS` - https://cloud.google.com/docs/authentication/getting-started
+  credentials:
+    description: Content of the service account credentials file
+    required: false
+  credentials-file:
+    description: Path to the Google service account credentials file
+    required: false
   release-notes:
     description: Release notes for this build.
     required: false
   release-notes-file:
-    description: Release notes for this build.
+    description: Path to the file containing release notes for this build.
     required: false
   testers:
     description: The email addresses of the testers you want to invite.
     required: false
   testers-file:
-    description: The email addresses of the testers you want to invite.
+    description: Path to the file containing the email addresses of the testers you want to invite.
     required: false
   groups:
     description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console.
     required: false
   groups-file:
-    description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console.
+    description: Path to the file containing the tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console.
     required: false
   debug:
     description: A flag you can include to print verbose log output.

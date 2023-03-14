@@ -37,16 +37,25 @@ inputs:
     description: A flag you can include to print verbose log output.
     required: false
     default: false
+  cache:
+    description: Whether to cache the firebase tools for next job, keeping this on will speed up the build.
+    required: false
+    default: true
+  upgrade:
+    description: Whether to attempt to upgrade firebase tools when cache is on, turning this off will speed up the build.
+    required: false
+    default: true
 runs:
   using: composite
   steps:
     - uses: actions/cache@v3
+      if: ${{ inputs.cache }}
       env: { cache-name: firebase-app-distribution-action }
       with: 
         path: /usr/local/bin/firebase
         key: firebase-tools
     - shell: bash
-      run: curl -sL https://firebase.tools | upgrade=true bash
+      run: curl -sL https://firebase.tools $(${{ inputs.upgrade }} && echo " | upgrade=true" || echo "") bash
     - shell: bash
       run: |
          /usr/local/bin/firebase appdistribution:distribute \

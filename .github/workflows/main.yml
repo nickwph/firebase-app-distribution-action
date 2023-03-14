@@ -1,29 +1,21 @@
 name: Main
-on: 
+on:
   push:
   pull_request:
   workflow_dispatch:
     inputs:
-      file:
-        type: string
-      app:
-        type: string
-      token:
-        type: string
-      release-notes:
-        type: string
-      release-notes-file:
-        type: string
-      testers:
-        type: string
-      testers-file:
-        type: string
-      groups:
-        type: string
-      groups-file:
-        type: string
-      debug:
-        type: boolean
+      file: { type: string }
+      app: {type: string}
+      token: {type: string}
+      release-notes: {type: string}
+      release-notes-file: {type: string}
+      testers: {type: string}
+      testers-file: {type: string}
+      groups: {type: string}
+      groups-file: {type: string}
+      debug: { type: boolean }
+      cache: { type: boolean }
+      upgrade: { type: boolean }
 
 jobs:
   test:
@@ -36,3 +28,25 @@ jobs:
           file: .github/workflows/assets/app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
+  test-no-upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          upgrade: false
+  test-no-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          cache: false

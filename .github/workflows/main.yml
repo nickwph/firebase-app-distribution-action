@@ -14,7 +14,26 @@ jobs:
         with:
           file: .github/workflows/assets/app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
+  test-use-credentials-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          credentials-file: ${{ secrets.FIREBASE_CREDENTIALS_FILE }}
+  test-use-credentials-env-var:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
   test-no-upgrade:
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +43,7 @@ jobs:
         with:
           file: .github/workflows/assets/app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
           upgrade: false
   test-no-cache:
     runs-on: ubuntu-latest
@@ -35,5 +54,5 @@ jobs:
         with:
           file: .github/workflows/assets/app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
           cache: false

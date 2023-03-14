@@ -47,6 +47,7 @@ runs:
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash
       run: |
+        echo ${{ inputs.token }}
         echo ${INPUT_TOKEN}
         echo ${INPUT_RELEASE-NOTES}
         echo ${INPUT_RELEASE-NOTES-FILE}

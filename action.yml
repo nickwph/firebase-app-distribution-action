@@ -51,11 +51,11 @@ runs:
          /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
           --token "${{ inputs.token }}"" \
-          --release-notes "${{ input.release-notes }}" \
-          --release-notes-file "${input.release-notes-file}}" \
-          --testers "${input.testers}}" \
-          --testers-file "${input.testers-file}}" \
-          --groups "${input.groups}}" \
-          --groups-file "${input.groups-file}}" \
-          --debug ${input.debug}} \
+          --release-notes "${{ inputs.release-notes }}" \
+          --release-notes-file "${inputs.release-notes-file}}" \
+          --testers "${inputs.testers}}" \
+          --testers-file "${inputs.testers-file}}" \
+          --groups "${inputs.groups}}" \
+          --groups-file "${inputs.groups-file}}" \
+          --debug ${inputs.debug}} \
           ${{ inputs.file }}

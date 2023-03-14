@@ -30,8 +30,8 @@ jobs:
         with:
           file: app-debug.apk
           app: ${{ secrets.FIREBASE_APP_ID }}
-          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}            # Optional: This overrides "credentials-file" and `GOOGLE_APPLICATION_CREDENTIALS`
-          credentials-file: ${{ secrets.FIREBASE_CREDENTIALS_FILE }}  # Optional: This overrides environment `GOOGLE_APPLICATION_CREDENTIALS`
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
+          credentials-file: ${{ secrets.FIREBASE_CREDENTIALS_FILE }}  # Optional: This is ignored if credentials is defined.
           release-notes: ""                    # Optional
           release-notes-file: ""               # Optional
           testers: ""                          # Optional
@@ -52,7 +52,7 @@ According to Google, we have to start using [service account for authenticating 
 
 To get the credentials you can go to your Firebase project -> Project settings -> Service account -> Generate new private key.
 
-![even-faster-with-cache](.docs/assets/google-service-account.png?raw=true)
+![even-faster-with-cache](.docs/assets/google-service-account-credentials.png?raw=true)
 
 ### Use credentials in this action
 

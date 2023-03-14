@@ -1,5 +1,5 @@
-name: Firebase App Distribution
-description: Upload artifacts to Firebase App Distribution
+name: Distribute To Firebase App Distribution
+description: Upload artifacts to Firebase App Distribution within seconds
 author: Nicholas Wong
 branding:
   color: blue

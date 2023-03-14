@@ -6,38 +6,41 @@ branding:
   icon: cloud-drizzle
 inputs:
   file:
-    description: The release binary file 
+    description: The release binary file
     required: true
   app:
-    description: Your app's Firebase App ID. You can find the App ID in the Firebase console, on the General Settings page. 
+    description: Your app's Firebase App ID. You can find the App ID in the Firebase console, on the General Settings page.
     required: true
   token:
-    description: A refresh token that's printed when you authenticate your CI environment with the Firebase CLI (read Use the CLI with CI systems for more information). 
+    description: A refresh token that's printed when you authenticate your CI environment with the Firebase CLI (read Use the CLI with CI systems for more information).
     required: false
   release-notes:
-    description: Release notes for this build. 
+    description: Release notes for this build.
     required: false
   release-notes-file:
-    description: Release notes for this build. 
+    description: Release notes for this build.
     required: false
   testers:
-    description: The email addresses of the testers you want to invite. 
+    description: The email addresses of the testers you want to invite.
     required: false
   testers-file:
-    description: The email addresses of the testers you want to invite. 
+    description: The email addresses of the testers you want to invite.
     required: false
   groups:
-    description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console. 
+    description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console.
     required: false
   groups-file:
-    description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console. 
+    description: The tester groups you want to invite (refer to Manage testers). Groups are specified using group aliases, which you can look up in the Firebase console.
     required: false
   debug:
-    description: A flag you can include to print verbose log output. 
+    description: A flag you can include to print verbose log output.
     required: false
 runs:
   using: composite
   steps:
+    - uses: actions/cache@v3
+      env: { cache-name: firebase-app-distribution-action }
+      with: { path: /usr/local/bin/firebase }
     - shell: bash
       run: curl -sL https://firebase.tools | upgrade=true bash
     - shell: bash

@@ -42,8 +42,6 @@ jobs:
           upgrade: true           # Optional: Default true. Whether to attempt to upgrade firebase tools when cache is on, turning this false will speed up the build.
 ```
 
-
-
 ## Limitations and improvements
 
 1. Currently only works on linux (including macos)

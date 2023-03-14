@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run .
+      - name: Run nickwph/firebase-app-distribution-action@v1
         uses: ./
         with:
           file: .github/workflows/assets/app-debug.apk

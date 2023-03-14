@@ -51,7 +51,7 @@ runs:
         # app: ${{ inputs.app }}
         # token: ${{ inputs.token }}
         /usr/local/bin/firebase appdistribution:distribute \
-          --app ${INPUT_APP} \
+          --app ${{ inputs.app }} \
           ${INPUT_TOKEN:+ --token ${INPUT_TOKEN}} \
           ${INPUT_RELEASE-NOTES:+ --release-notes ${INPUT_RELEASE-NOTES}} \
           ${INPUT_RELEASE-NOTES-FILE:+ --release-notes-file ${INPUT_RELEASE-NOTES-FILE}} \
@@ -60,4 +60,4 @@ runs:
           ${INPUT_GROUPS:+ --groups ${INPUT_GROUPS}} \
           ${INPUT_GROUPS-FILE:+ --groups-file ${INPUT_GROUPS-FILE}} \
           ${INPUT_DEBUG:+ --debug ${INPUT_DEBUG}} \
-          ${INPUT_FILE}
+          ${{ inputs.file }}

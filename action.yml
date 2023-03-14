@@ -84,6 +84,6 @@ runs:
           --testers-file "${{ inputs.testers-file }}" \
           --groups "${{ inputs.groups }}" \
           --groups-file "${{ inputs.groups-file }}" \
-          $(${{ inputs.token != "" }} && echo "--token ${{ inputs.token }}" || echo "") \
+          $(${{ inputs.token != null }} && echo "--token ${{ inputs.token }}" || echo "") \
           $(${{ inputs.debug }} && echo "--debug" || echo "") \
           ${{ inputs.file }}

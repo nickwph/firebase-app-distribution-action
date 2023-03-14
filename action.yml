@@ -76,6 +76,7 @@ runs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: .github/credentials.json
       run: |
+        cat $GOOGLE_APPLICATION_CREDENTIALS
         /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
           --release-notes "${{ inputs.release-notes }}" \

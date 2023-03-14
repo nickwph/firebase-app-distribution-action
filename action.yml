@@ -52,4 +52,5 @@ runs:
         # token: ${{ inputs.token }}
         /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \
+          --token ${{ inputs.token }} \
           ${{ inputs.file }}

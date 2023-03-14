@@ -51,21 +51,22 @@ runs:
     - uses: actions/cache@v3
       if: ${{ inputs.cache }}
       env: { cache-name: firebase-app-distribution-action }
-      with: 
+      with:
         path: /usr/local/bin/firebase
         key: firebase-tools
     - shell: bash
-      run: curl -sL https://firebase.tools | $(${{ inputs.upgrade }} && echo "upgrade=true" || echo "") bash
+      env: { upgrade: ${{ inputs.upgrade }} }
+      run: curl -sL https://firebase.tools | bash
     - shell: bash
       run: |
-         /usr/local/bin/firebase appdistribution:distribute \
-          --app ${{ inputs.app }} \
-          --token "${{ inputs.token }}" \
-          --release-notes "${{ inputs.release-notes }}" \
-          --release-notes-file "${{ inputs.release-notes-file }}" \
-          --testers "${{ inputs.testers }}" \
-          --testers-file "${{ inputs.testers-file }}" \
-          --groups "${{ inputs.groups }}" \
-          --groups-file "${{ inputs.groups-file }}" \
-          $(${{ inputs.debug }} && echo "--debug" || echo "") \
-          ${{ inputs.file }}
+        /usr/local/bin/firebase appdistribution:distribute \
+         --app ${{ inputs.app }} \
+         --token "${{ inputs.token }}" \
+         --release-notes "${{ inputs.release-notes }}" \
+         --release-notes-file "${{ inputs.release-notes-file }}" \
+         --testers "${{ inputs.testers }}" \
+         --testers-file "${{ inputs.testers-file }}" \
+         --groups "${{ inputs.groups }}" \
+         --groups-file "${{ inputs.groups-file }}" \
+         $(${{ inputs.debug }} && echo "--debug" || echo "") \
+         ${{ inputs.file }}

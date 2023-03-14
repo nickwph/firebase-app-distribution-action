@@ -36,6 +36,7 @@ inputs:
     description: A flag you can include to print verbose log output. 
     required: false
 runs:
+  using: composite
   steps:
     - shell: bash
       run: curl -sL https://firebase.tools | upgrade=true bash

@@ -37,8 +37,10 @@ inputs:
     required: false
 runs:
   steps:
-    - run: curl -sL https://firebase.tools | upgrade=true bash
-    - run: |
+    - shell: bash
+      run: curl -sL https://firebase.tools | upgrade=true bash
+    - shell: bash
+      run: |
         firebase appdistribution:distribute \
           --app ${INPUT_APP} \
           ${INPUT_TOKEN:+ --token ${INPUT_TOKEN}} \

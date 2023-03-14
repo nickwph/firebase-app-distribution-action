@@ -67,14 +67,14 @@ runs:
     - shell: bash
       if: ${{ inputs.credentials != null }}
       run: |
-        echo "${{ inputs.credentials }}" > .github/credentials.json
+        echo '${{ inputs.credentials }}' > .github/credentials.json
         echo "GOOGLE_APPLICATION_CREDENTIALS=.github/credentials.json" >> $GITHUB_ENV
     - shell: bash
       run: |
         curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash
     - shell: bash
       run: |
-        echo "${{ inputs.credentials }}" > .github/credentials.json
+        echo '${{ inputs.credentials }}' > .github/credentials.json
         export GOOGLE_APPLICATION_CREDENTIALS=.github/credentials.json
         /usr/local/bin/firebase appdistribution:distribute \
           --app ${{ inputs.app }} \

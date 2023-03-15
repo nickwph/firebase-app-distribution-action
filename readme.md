@@ -52,7 +52,11 @@ According to Google, we have to start using [service account for authenticating 
 
 To get the credentials you can go to your Firebase project -> Project settings -> Service account -> Generate new private key.
 
-![even-faster-with-cache](.docs/assets/google-service-account-credentials.png?raw=true)
+![google-service-account-credentials](.docs/assets/google-service-account-credentials.png?raw=true)
+
+And then make sure in Google Cloud IAM, the user "firebase-adminsdk" has the permission "Firebase App Distribution Admin SDK Service Agent".
+
+![google-service-account-permission](.docs/assets/google-service-account-permission.png?raw=true)
 
 ### Use credentials in this action
 

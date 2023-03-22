@@ -67,9 +67,8 @@ runs:
     - shell: bash
       if: ${{ inputs.credentials != null }}
       run: |
-        mkdir .tmp
-        echo '${{ inputs.credentials }}' > .tmp/credentials.json
-        echo "GOOGLE_APPLICATION_CREDENTIALS=.tmp/credentials.json" >> $GITHUB_ENV
+        echo '${{ inputs.credentials }}' > $RUNNER_TEMP/credentials.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/credentials.json" >> $GITHUB_ENV
     - shell: bash
       run: |
         curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash

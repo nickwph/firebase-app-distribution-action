@@ -42,15 +42,15 @@ inputs:
   debug:
     description: A flag you can include to print verbose log output.
     required: false
-    default: false
+    default: 'false'
   cache:
     description: Whether to cache the firebase tools for next job, keeping this on will speed up the build.
     required: false
-    default: true
+    default: 'true'
   upgrade:
     description: Whether to attempt to upgrade firebase tools when cache is on, turning this off will speed up the build.
     required: false
-    default: true
+    default: 'true'
 runs:
   using: composite
   steps:
@@ -71,10 +71,14 @@ runs:
         echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/credentials.json" >> $GITHUB_ENV
     - shell: bash
       run: |
-        curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash
+        if ! command -v firebase &> /dev/null; then
+          curl -sL https://firebase.tools | bash
+        elif test -f /usr/local/bin/firebase; then
+          curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash
+        fi
     - shell: bash
       run: |
-        /usr/local/bin/firebase appdistribution:distribute \
+        $(which firebase) appdistribution:distribute \
           --app ${{ inputs.app }} \
           --token "${{ inputs.token }}" \
           --release-notes "${{ inputs.release-notes }}" \

@@ -60,23 +60,27 @@ runs:
       with:
         path: /usr/local/bin/firebase
         key: firebase-tools
-    - shell: bash
+    - name: Export content of credentials file as environment variable
+      shell: bash
       if: ${{ inputs.credentials == null && inputs.credentials-file != null }}
       run: |
         echo "GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials-file }}" >> $GITHUB_ENV
-    - shell: bash
+    - name: Export credentials as environment variable
+      shell: bash
       if: ${{ inputs.credentials != null }}
       run: |
         echo '${{ inputs.credentials }}' > $RUNNER_TEMP/credentials.json
         echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/credentials.json" >> $GITHUB_ENV
-    - shell: bash
+    - name: Install firebase tools if not installed
+      shell: bash
       run: |
         if ! command -v firebase &> /dev/null; then
           curl -sL https://firebase.tools | bash
         elif test -f /usr/local/bin/firebase; then
           curl -sL https://firebase.tools | upgrade=${{ inputs.upgrade }} bash
         fi
-    - shell: bash
+    - name: Run firebase appdistribution:distribute 
+      shell: bash
       run: |
         $(which firebase) appdistribution:distribute \
           --app ${{ inputs.app }} \

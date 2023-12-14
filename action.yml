@@ -54,6 +54,15 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Checking node version
+      id: node-version-above-18
+      shell: bash
+      run: bash etc/compare-node-version.sh
+      continue-on-error: true
+    - uses: actions/setup-node@v4
+      if: ${{ steps.node-version-above-18.conclusion == 'failure' }}
+      with:
+        node-version: '18.x'
     - uses: actions/cache@v3
       if: ${{ inputs.cache == 'true' }}
       env: { cache-name: firebase-app-distribution-action }

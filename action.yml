@@ -55,11 +55,12 @@ runs:
   using: composite
   steps:
     - name: Checking node version
+      id: node-version-above-21
       shell: bash
       run: bash etc/compare-node-version.sh
       continue-on-error: true
     - uses: actions/setup-node@v4
-      if: ${{ failure() }}
+      if: ${{ steps.node-version-above-21.conclusion == 'failure' }}
       with:
         node-version: '21.x'
     - uses: actions/cache@v3

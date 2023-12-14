@@ -48,7 +48,7 @@ jobs:
           app: ${{ secrets.FIREBASE_APP_ID }}
           credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
           cache: false
-  test-older-node-version:
+  test-node-version-16:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -62,4 +62,31 @@ jobs:
           app: ${{ secrets.FIREBASE_APP_ID }}
           credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
           cache: false
-
+  test-node-version-18:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
+          cache: false
+  test-node-version-21:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21.x'
+      - name: Run nickwph/firebase-app-distribution-action@v1
+        uses: ./
+        with:
+          file: .github/workflows/assets/app-debug.apk
+          app: ${{ secrets.FIREBASE_APP_ID }}
+          credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
+          cache: false

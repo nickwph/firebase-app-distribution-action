@@ -57,6 +57,7 @@ runs:
     - name: Checking node version
       shell: bash
       run: bash etc/compare-node-version.sh
+      continue-on-error: true
     - uses: actions/setup-node@v4
       if: ${{ failure() }}
       with:

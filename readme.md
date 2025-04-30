@@ -81,4 +81,4 @@ credentials-file: ${{ secrets.FIREBASE_CREDENTIALS_FILE }}
 
 ## Limitations and improvements
 
-1. Currently only works on linux (including macos)
+1. Currently only works on Linux and MacOS
